@@ -695,7 +695,7 @@ def run_amendment_logic(find_word, replace_word):
                 
                 # 호 내용 검색
                 for 호 in 항.findall("호"):
-                    호번호 = 호.findtext("호번호").replace(".", "").strip()
+                    호번호 = 호.findtext("호번호")
                     
                     # 가지번호 확인 (예: 제14호의3)
                     호가지번호 = None
@@ -713,7 +713,6 @@ def run_amendment_logic(find_word, replace_word):
                         호번호_표시 = f"제{호번호}호"
                         if 호가지번호:
                             호번호_표시 = f"제{호번호}호의{호가지번호}"
-                        호식별자 = f"{항식별자}{호번호_표시}"
                             
                         print(f"매치 발견: {조문식별자}{항번호_부분}{호번호_표시}")
                         tokens = re.findall(r'[가-힣A-Za-z0-9]+', 호내용)
